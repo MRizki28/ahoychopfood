@@ -1,0 +1,33 @@
+.testing {
+    background-image: url('../../public/assets/FE/img/bg-hero.webp');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding-top: 10px;
+    padding-bottom: 100px;
+    background-color: #FFFFFF;
+}
+
+.category {
+    background-image: url('../../public/assets/FE/img/bg-bestsale.webp');
+    padding-top: 70px;
+    padding-bottom: 70px;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+@font-face {
+    font-family: Dosis-SemiBold;
+    src: url("/public/assets/FE/fonts/Dosis/static/Dosis-SemiBold.ttf");
+}
+
+@font-face {
+    font-family: Dosis-Reguler;
+    src: url("/public/assets/FE/fonts/Dosis/static/Dosis-Regular.ttf");
+}
+
+@font-face {
+    font-family: Dosis-Bold;
+    src: url("/public/assets/FE/fonts/Dosis/static/Dosis-Bold.ttf");
+}
