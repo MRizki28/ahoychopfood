@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('img_menu');
-            $table->int('price');
+            $table->integer('price');
             $table->timestamps();
         });
     }
@@ -35,5 +35,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('tb_category');
+        Schema::dropIfExists('tb_menu');
     }
 };
