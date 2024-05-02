@@ -10,25 +10,43 @@
                     <div class="card-header"></div>
                     <div class="card-body">
                         <div>
+                            <div class="row ">
+                                @for ($i = 1; $i <= 4; $i++)
+                                    <div class="col-6 col-sm-3 col-md-2 text-center">
+                                        <div class="text-center">
+                                            <span class="font-weight-bold" id="label_category_{{ $i }}"></span>
+                                        </div>
+                                        <img src="" alt="category"
+                                            id="preview_{{ $i }}" class="mx-2 pb-2 "
+                                            style="max-width: 150px; padding-top: 23px" />
+                                    </div>
+                                @endfor
+                            </div>
                             <form id="formCategory">
                                 @csrf
                                 <div class="row" id="categoryInputs">
                                     @for ($i = 1; $i <= 4; $i++)
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <input type="hidden" name="id[]" id="id_{{ $i }}">
                                             <div class="form-group">
-                                                <label for="category_{{ $i }}">Kategori {{ $i }}</label>
-                                                <input type="text" name="category[]" id="category_{{ $i }}" class="form-control">
+                                                <label for="category_{{ $i }}">Kategori
+                                                    {{ $i }}</label>
+                                                <input type="text" name="category[]" id="category_{{ $i }}"
+                                                    class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <label for="img_category_{{ $i }}">Gambar</label>
-                                                <input type="file" name="img_category[]" id="img_category_{{ $i }}" class="form-control">
+                                                <div class="custom-file">
+                                                    <input type="file" name="img_category[]"
+                                                        id="img_category_{{ $i }}" class="custom-file-input">
+                                                    <label class="custom-file-label" for="img_category_{{ $i }}"
+                                                        id="efile_surat-label_{{ $i }}">File</label>
+                                                </div>
                                             </div>
                                         </div>
                                     @endfor
-                                    <div>
-                                        <button type="submit">Submit</button>
-                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end mt-3">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -51,6 +69,16 @@
                         response.data.forEach(function(category, index) {
                             $('#id_' + (index + 1)).val(category.id);
                             $('#category_' + (index + 1)).val(category.category);
+                            let fileName = category.img_category.split('/').pop();
+                            $('#efile_surat-label_' + (index + 1)).text(fileName);
+                            $('#label_category_' + (index + 1)).text(category.category)
+                            $('#preview_' + (index + 1)).attr('src' , "{{ asset('img_category/') }}/" + category.img_category)
+
+                            $(document).on('change', '#img_category_' + (index + 1),
+                                function() {
+                                    let fileName = $(this).val().split('\\').pop();
+                                    $('#efile_surat-label_' + (index + 1)).text(fileName);
+                                });
                         });
                     },
                     error: function(xhr, status, error) {
@@ -77,7 +105,7 @@
                         submitButton.attr('disabled', false);
                         if (response.message == 'Check your validation') {
                             alert('Check validasi')
-                        }else{
+                        } else {
                             alert('Sukses')
                             getAllData();
                         }
