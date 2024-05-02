@@ -16,4 +16,9 @@ class CategoryModel extends Model
         'category',
         'img_category'
     ];
+
+    public function getMenu()
+    {
+        return $this->hasMany(MenuModel::class , 'id_category');
+    }
 }
