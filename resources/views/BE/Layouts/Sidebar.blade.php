@@ -39,19 +39,14 @@
                                 <p>Kategori</p>
                             </a>
                         </li>   
+						<li class="nav-item {{ request()->is('cms/be/menu*') ? 'active' : '' }}">
+                            <a href="{{ url('/cms/be/menu') }}">
+                                <i class="fas fa-file"></i>
+                                <p>Menu</p>
+                            </a>
+                        </li>   
 					<ul>
 				</div>
 			</div>
 		</div>
-
-		<script>
-		$(document).ready(function() {
-				let userLevelSpan = $('#user-level');
-				let positionText = userLevelSpan.text();
-
-				let newTextWithLineBreaks = insertLineBreaks(positionText, 3);
-				userLevelSpan.html(newTextWithLineBreaks);
-				console.log(userLevelSpan)
-		});
-		</script>
 		<!-- End Sidebar -->
