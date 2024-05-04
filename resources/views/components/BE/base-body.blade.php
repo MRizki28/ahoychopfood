@@ -4,10 +4,12 @@
 
                 <div class="card-header">
                     @if ($useHeaderAddButton == 'true')
-                        <button class="btn btn-info font-weight-bold" data-toggle="modal"
-                            data-target="{{ $headerAddButton }}">
+                    <div class=" d-flex justify-content-end">
+                        <button class="btn btn-primary" data-toggle="modal"
+                            data-target="{{ $modalId }}">
                             <i class="fas fa fa-plus"></i> {{ $headerAddButton }}
                         </button>
+                    </div>
                     @endif
                 </div>
 
