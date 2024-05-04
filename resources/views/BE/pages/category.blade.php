@@ -1,8 +1,7 @@
 @extends('BE.Layouts.Base')
 @section('content')
     <div class="page-inner">
-        <x-BE.base-header headerName="Category" headerIcon="fas fa-box" headerAddButton="Category"
-            useHeaderAddButton="false"></x-BE.base-header>
+        <x-BE.base-header headerName="Category" headerIcon="fas fa-box" ></x-BE.base-header>
         <x-BE.base-body useHeaderAddButton="false">
             <x-slot name="slot">
                 <x-BE.category.category-render>
