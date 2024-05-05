@@ -1,7 +1,7 @@
 <nav class="bg-transparent mt-3">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="https://flowbite.com/" class="flex items-center  rtl:space-x-reverse">
-            <img src="{{ asset('assets/FE/img/logo.webp') }}" class="h-12" alt="Flowbite Logo" />
+            <img src="{{ asset('assets/FE/img/logo2.webp') }}" class="h-12" alt="Flowbite Logo" />
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <button type="button"
