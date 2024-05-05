@@ -1,11 +1,15 @@
 .testing {
-    background-image: url('../../public/assets/FE/img/bg-hero.webp');
+    background-image: url('../../public/assets/FE/img/hero2.webp');
+    padding-top: 50px;
+    padding-bottom: 250px;
     background-size: cover;
-    background-position: bottom;
+    background-position: center;
     background-repeat: no-repeat;
-    padding-top: 10px;
-    padding-bottom: 100px;
-    background-color: #FFFFFF;
+}
+
+.section-bg {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIwIDE1MCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHBhdGggZD0iTTAgNDAuMjE1bDY0IDE5LjYwMmM2NCAxOS45NjkgMTkyIDU4LjYyIDMyMCAzOS4yOTRDNTEyIDc5Ljc4NiA2NDAgLjY0NSA3NjggLjkyYzEyOC0uMjc1IDI1NiA3OC44NjYgMzg0IDg4LjM0NSAxMjggOS44NDYgMjU2LTQ5LjA1IDM4NC01My45MjcgMTI4LTUuMjQ1IDI1NiA0NC40NDggMzIwIDY4LjY1bDY0IDI0LjU3MVYxNTBIMFY0MC4yMTV6IiBmaWxsPSIjRjdGN0Y3IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48L3N2Zz4=);
+    background-size: 100% 150px;
 }
 
 .category {
