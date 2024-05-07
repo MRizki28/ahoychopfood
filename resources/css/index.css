@@ -12,6 +12,28 @@
     background-size: 100% 150px;
 }
 
+.footer-abstrak{
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIwIDE1MCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHBhdGggZD0iTTAgMTA5Ljc4NWw2NC0xOS42MDJjNjQtMTkuOTY5IDE5Mi01OC42MiAzMjAtMzkuMjk0IDEyOCAxOS4zMjUgMjU2IDk4LjQ2NiAzODQgOTguMTkxIDEyOCAuMjc1IDI1Ni03OC44NjYgMzg0LTg4LjM0NSAxMjgtOS44NDYgMjU2IDQ5LjA1IDM4NCA1My45MjcgMTI4IDUuMjQ1IDI1Ni00NC40NDggMzIwLTY4LjY1bDY0LTI0LjU3MVYwSDB2MTA5Ljc4NXoiIGZpbGw9IiNGRkZGRkYiIC8+PC9zdmc+);
+    width: 100%;
+    height: 150px;
+    background-size: 100% 150px;
+}
+
+.footer-bg{
+    padding-top: 60px;
+    padding-bottom: 50px;
+    background-image: url('../../public/assets/FE/img/footer.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateX(0%);
+}
+
 .category {
     background-image: url('../../public/assets/FE/img/bg-bestsale.webp');
     padding-top: 70px;
