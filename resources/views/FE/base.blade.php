@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <section class="bg-white">
+    <header class="bg-white sticky top-0 z-50">
         @include('FE.layouts.navbar')
-    </section>
+    </header>
     <section class="testing" id="home">
         @include('FE.Contents.hero')
     </section>
@@ -32,7 +32,7 @@
     <section class="bg-white" id="site">
         @include('FE.Contents.map')
     </section>
-    <section class="footer-bg" >
+    <section class="footer-bg" id="footer">
         @include('FE.layouts.footer')
     </section>
 </body>
