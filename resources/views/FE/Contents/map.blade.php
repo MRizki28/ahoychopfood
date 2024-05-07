@@ -5,7 +5,7 @@
     </div>
     <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
         @for ($i = 1; $i <= 10; $i++)
-            <div class="p-4 border-b-4">
+            <div class="p-4 border-b-4" data-aos="flip-up" data-aos-duration="1000">
                 <a href="https://maps.app.goo.gl/T9tKYE1Az9tXF1WM7" target="_blank" class="space-x-3 hover:text-red-600"><i
                         class="fa-solid fa-location-dot text-red-600"></i><span class="font-dosisBold">Samarinda No 20</span></a>
             </div>
