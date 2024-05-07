@@ -1,11 +1,7 @@
-<style>
-
-</style>
-
 <div>
     <div class="max-w-screen-xl mb-24 p-4 mx-auto md:mt-24">
         <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
-            <h2 class="font-dosisBold text-[48px] text-red-600 underline">Information</h2>
+            <h2 class="font-dosisBold text-[40px] text-red-600 underline">Information</h2>
             <h4 class="font-dosisBold text-[20px] text-gray-600 ">Our service means satisfy</h2>
         </div>
         <div class="grid grid-cols-1 mt-9 gap-4 md:gap-3 md:grid-cols-3">
