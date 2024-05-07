@@ -1,6 +1,6 @@
 <div class="max-w-screen-xl p-4 mx-auto">
     <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
-        <h2 class="font-dosisBold text-[48px] text-red-600 underline" >OUR MENU</h2>
+        <h2 class="font-dosisBold text-[40px] text-red-600 underline" >OUR MENU</h2>
         <div class="mt-4 flex justify-center">
             <p class="font-dosisBold text-gray-600 text-[18px] w-[80%]">Kami membantu anda dengan menyajikan makanan nikmat yang
                 tentunya
