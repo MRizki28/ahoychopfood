@@ -20,14 +20,20 @@
     <section class="testing" id="home">
         @include('FE.Contents.hero')
     </section>
-    <section class="bg-[#FEFAF5]">
+    <section class="bg-[#FEFAF5]" id="menu">
         @include('FE.Contents.menu')
     </section>
-    <section class="bg-white">
+    <section class="bg-white" id="service">
         @include('FE.Contents.tasty')
     </section>
-    <section class="category">
+    <section class="category" id="information">
         @include('FE.Contents.blog')
+    </section>
+    <section class="bg-white" id="site">
+        @include('FE.Contents.map')
+    </section>
+    <section class="footer-bg" >
+        @include('FE.layouts.footer')
     </section>
 </body>
 
