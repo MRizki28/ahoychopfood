@@ -6,7 +6,7 @@
         </div>
         <div class="grid grid-cols-1 mt-9 gap-4 md:gap-3 md:grid-cols-3">
             @for ($i = 1; $i <= 6; $i++)
-                <div class="space-y-4 text-center">
+                <div class="space-y-4 text-center" data-aos="flip-left" data-aos-duration="1000">
                     <div>
                         <a href="#" onclick="blogModal.showModal()">
                             <img src="{{ asset('assets/FE/img/blog1.jpeg') }}" width="387" height="387"
