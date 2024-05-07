@@ -1,6 +1,6 @@
 <div class="max-w-screen-xl p-4 mx-auto mb-48">
     <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
-        <h2 class="font-dosisBold text-[48px] text-red-600 underline">Tasty & Fresh</h2>
+        <h2 class="font-dosisBold text-[40px] text-red-600 underline">Tasty & Fresh</h2>
         <h4 class="font-dosisBold text-[20px] text-gray-600 ">Our service means satisfy</h2>
     </div>
 
