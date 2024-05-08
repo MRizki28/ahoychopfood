@@ -13,15 +13,10 @@ class MenuModel extends Model
     protected $table = 'tb_menu';
     protected $fillable = [
         'id',
-        'id_category',
         'title',
         'img_menu',
         'description',
         'price'
     ];
 
-    public function getCategory()
-    {
-        return $this->belongsTo(CategoryModel::class, 'id_category');
-    }
 }

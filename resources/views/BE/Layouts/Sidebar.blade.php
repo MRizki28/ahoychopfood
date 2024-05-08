@@ -33,12 +33,12 @@
 								<p>Dashboard</p>
 							</a>
 						</li> 
-						<li class="nav-item {{ request()->is('cms/be/category*') ? 'active' : '' }}">
+						{{-- <li class="nav-item {{ request()->is('cms/be/category*') ? 'active' : '' }}">
                             <a href="{{ url('/cms/be/category') }}">
                                 <i class="fas fa-file"></i>
                                 <p>Kategori</p>
                             </a>
-                        </li>   
+                        </li>    --}}
 						<li class="nav-item {{ request()->is('cms/be/menu*') ? 'active' : '' }}">
                             <a href="{{ url('/cms/be/menu') }}">
                                 <i class="fas fa-file"></i>

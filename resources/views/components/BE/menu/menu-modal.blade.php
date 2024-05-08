@@ -11,48 +11,31 @@
                     </div>
                     <div class="form mt-4">
                         <form action="" id="formTambah">
-                            @csrf
-                            <input type="hidden" name="id" id="id">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group form-show-validation">
-                                        <label for="title">Nama Menu</label>
-                                        <input type="text" class="form-control" name="title"
-                                            placeholder="Contoh: Nasi Ayam" id="title">
-                                    </div>
+                            <div class="form-group">
+                                <label for="title">Nama Menu</label>
+                                <input type="text" class="form-control" name="title"
+                                    placeholder="Contoh: Nasi Ayam" id="title">
+                                <span></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="img_menu">Gambar</label>
+                                <div class="custom-file">
+                                    <input type="file" name="img_menu" id="img_menu" class="custom-file-input">
+                                    <label class="custom-file-label" for="img_menu" id="efile_menu-label">Pilih
+                                        file...</label>
+                                    <span></span>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group form-show-validation">
-                                        <label for="id_category">Kategori</label>
-                                        <select name="id_category" class="form-control" id="id_category"
-                                            style="width: 100%; height: 30px;">
-                                            <option value="" selected disabled hidden>Choose here</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="price">Gambar</label>
-                                        <div class="custom-file">
-                                            <input type="file" name="img_menu" id="img_menu"
-                                                class="custom-file-input">
-                                            <label class="custom-file-label" for="img_menu"
-                                                id="efile_menu-label">File</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group form-show-validation">
-                                        <label for="price">Harga</label>
-                                        <input type="number" class="form-control" name="price" placeholder=""
-                                            id="price">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group form-show-validation">
-                                        <label for="desciption">Deskripsi</label>
-                                        <textarea class="form-control" name="description" id="desciption" rows="3"></textarea>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Harga</label>
+                                <input type="number" class="form-control" name="price" placeholder="" id="price">
+                                <span></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="border p-2">
+                                    <label for="description">Deskripsi</label>
+                                    <textarea name="description" class="input-description " id="description"></textarea>
+                                    <span class="error-description"></span>
                                 </div>
                             </div>
                             <div class="button-footer d-flex justify-content-between mt-4">
@@ -71,3 +54,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#description').summernote({
+            tabsize: 2,
+            height: 100,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['ul', 'ol']],
+                ['view', ['codeview']]
+            ],
+        });
+    });
+</script>

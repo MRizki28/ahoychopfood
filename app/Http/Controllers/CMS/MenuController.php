@@ -16,9 +16,9 @@ class MenuController extends Controller
         $this->menuRepo = $menuRepo;
     }
 
-    public function getAllData()
+    public function getAllData(Request $request)
     {
-        return $this->menuRepo->getAllData();
+        return $this->menuRepo->getAllData($request);
     }
 
     public function createData(MenuRequest $request)

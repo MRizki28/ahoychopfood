@@ -18,6 +18,7 @@
 	<script src="{{asset('static/js/select2.full.min.js')}}"></script>
     <script src="{{ asset('static/js/plugin/chart.js/chart.min.js') }}"></script>
     <script src="{{ asset('static/helper/helper.js') }}"></script>
+    <script src="{{ asset('static/BE/validationMenu.js') }}"></script>
 
 	{{-- Jquery Validate --}}
 	

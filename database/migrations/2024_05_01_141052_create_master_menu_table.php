@@ -11,16 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_category', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('category');
-            $table->string('img_category');
-            $table->timestamps();
-        });
-
         Schema::create('tb_menu', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('id_category')->constrained('tb_category');
             $table->string('title');
             $table->string('description');
             $table->string('img_menu');
@@ -35,6 +27,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('tb_category');
-        Schema::dropIfExists('tb_menu');
     }
 };

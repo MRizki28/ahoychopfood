@@ -6,6 +6,7 @@ use App\Http\Requests\Menu\MenuRequest;
 use App\Interfaces\MenuInterfaces;
 use App\Models\MenuModel;
 use App\Traits\HttpResponseTraits;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class MenuRepositories implements MenuInterfaces
@@ -19,9 +20,25 @@ class MenuRepositories implements MenuInterfaces
         $this->menuModel = $menuModel;
     }
 
-    public function getAllData()
+    public function getAllData(Request $request)
     {
-        $data = $this->menuModel->with('getCategory')->get();
+
+        $search = $request->input('search');
+        $limit = $request->input('limit') ? $request->input('limit') : 10;
+        $page = (int) $request->input('page', 1);
+
+        $query = $this->menuModel::query();
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('price', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%');
+            });
+        }
+
+        $data = $query->paginate($limit, ['*'], 'page', $page);
+
         if ($data->isEmpty()) {
             return $this->dataNotFound();
         } else {
@@ -33,7 +50,6 @@ class MenuRepositories implements MenuInterfaces
     {
         try {
             $data = new $this->menuModel;
-            $data->id_category = htmlspecialchars($request->input('id_category'));
             $data->title = htmlspecialchars($request->input('title'));
             if ($request->hasFile('img_menu')) {
                 $file = $request->file('img_menu');

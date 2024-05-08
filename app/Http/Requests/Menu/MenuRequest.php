@@ -24,7 +24,6 @@ class MenuRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_category' => 'required',
             'title' => 'required',
             'img_menu' => 'required|mimes:png,jpg,jpeg,webp',
             'description' => 'required',

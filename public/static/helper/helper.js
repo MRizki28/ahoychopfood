@@ -6,64 +6,35 @@ function paramsUrl(url, params) {
 }
 
 function paginationLink(element, params) {
+    let html = '';
     params.data.links.forEach((link, index) => {
         if (index === 0) {
-            element.append(`
+            html += `
                 <li class="page-item ${params.data.prev_page_url ? '' : 'disabled'}">
-                    <a class="page-link" href="${params.data.prev_page_url || '#'}" aria-label="Previous" id="pagination-prev" >
+                    <a class="page-link" href="${params.data.prev_page_url && typeof params.data.prev_page_url === 'string' ? params.data.prev_page_url : '#'}" aria-label="Previous" id="pagination-prev" >
                         <span aria-hidden="true">«</span>
                         <span class="sr-only">Previous</span>
                     </a>
                 </li>
-            `)
+            `;
         } else if (index === params.data.links.length - 1) {
-            element.append(`
+            html += `
                 <li class="page-item ${params.data.next_page_url ? '' : 'disabled'}">
-                    <a class="page-link" href="${params.data.next_page_url || '#'}" aria-label="Next" id="pagination-next" >
+                    <a class="page-link" href="${params.data.next_page_url && typeof params.data.next_page_url === 'string' ? params.data.next_page_url : '#'}" aria-label="Next" id="pagination-next" >
                         <span aria-hidden="true">»</span></span>
                         <span class="sr-only">Next</span>
                     </a>
                 </li>
-            `)
+            `;
         } else {
-            element.append(`
+            html += `
                 <li class="page-item ${link.active ? 'active' : ''}"><a class="page-link" href="${link.url}">${link.label}</a></li>
-            `)
+            `;
         }
-    })
+    });
+    element.innerHTML = html;
 }
 
-function dateRangePickerSetup(element) {
-    element.daterangepicker({
-        autoUpdateInput: false,
-        locale: {
-            format: 'YYYY-MM-DD',
-            cancelLabel: 'Bersihkan',
-            applyLabel: 'Gunakan'
-        },
-    })
-
-    element.on('apply.daterangepicker', function (ev, picker) {
-        const startDate = picker.startDate.format('YYYY-MM-DD');
-        const endDate = picker.endDate.format('YYYY-MM-DD');
-        console.log("Start Date:", startDate);
-        console.log("End Date:", endDate);
-
-        console.log($(this).data('start-date'));
-        console.log($(this).data('end-date'));
-
-        $(this).val(startDate + ' s/d ' + endDate);
-        $(this).data('start-date', startDate);
-        $(this).data('end-date', endDate);
-    });
-
-
-    element.on('cancel.daterangepicker', function (ev, picker) {
-        $(this).val('');
-        $(this).data('start-date', '')
-        $(this).data('end-date', '')
-    });
-}
 
 function successAlert() {
     return Swal.fire({
@@ -169,49 +140,6 @@ function successDeleteAlert() {
     })
 }
 
-$(document).ready(function () {
-    $.validator.addMethod("fileExtension", function (value, element) {
-        return this.optional(element) || /\.(docx|png|jpg|jpeg|xlsx|xls|csv|doc|pdf)$/i.test(value);
-    },
-        "Hanya file dengan ekstensi docx, png, jpg, jpeg, xlsx, xls, csv, doc, atau pdf yang diperbolehkan."
-    );
-});
-
-function encryptToken(token, key) {
-    return CryptoJS.AES.encrypt(token, key).toString();
-}
-
-function decryptToken(tokenEncrpyt, key) {
-    let bytes = CryptoJS.AES.decrypt(tokenEncrpyt, key);
-    return bytes.toString(CryptoJS.enc.Utf8)
-}
-
-function protectedModificationSystem(event) {
-    if (event.originalEvent.storageArea === localStorage) {
-        if (!localStorage.getItem('entire_id_arsip') || !localStorage.getItem('nameUser')
-            || !localStorage.getItem('id_entire_user')
-            || !localStorage.getItem('id_entire_year')
-            || !localStorage.getItem('id_entire_type_document')) {
-            protectedAlert();
-            setTimeout(function () {
-                window.location.href = '/';
-            }, 2000);
-        }
-    }
-}
-
-function protectedModificationSystem2(event) {
-    if (event.originalEvent.storageArea === localStorage) {
-        if (!localStorage.getItem('personal_id_arsip') || !localStorage.getItem('user_name')
-            || !localStorage.getItem('id_year')
-            || !localStorage.getItem('id_type_document')) {
-            protectedAlert();
-            setTimeout(function () {
-                window.location.href = '/';
-            }, 2000);
-        }
-    }
-}
 
 function insertLineBreaks(text, wordsPerLine) {
     const words = text.split(' ');
@@ -229,4 +157,20 @@ function insertLineBreaks(text, wordsPerLine) {
     }
 
     return newText.trim();
+}
+
+function stripHtmlTags(text) {
+    var div = document.createElement("div");
+    div.innerHTML = text;
+    return div.textContent || div.innerText || "";
+}
+
+const dataNotFound = () => {
+    const emptyInfoTemplate = `
+        <tr class="text-center text-muted" id="template-empty-info">
+            <td colspan="9" class="">
+                <i class="fas fa-folder-open mr-1"></i> Data tidak ditemukan ...
+            </td>
+        </tr>`;
+    return emptyInfoTemplate;
 }
