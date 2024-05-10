@@ -11,7 +11,7 @@
 
     {{-- card desktop --}}
     <div>
-        <div id="infinite-scroll" class="overflow-auto max-h-96 grid grid-cols-1 mt-5 md:gap-y-10  gap-3 md:grid-cols-2">
+        <div id="infinite-scroll" class="overflow-auto max-h-[30rem] grid grid-cols-1 mt-5 md:gap-y-10  gap-3 md:grid-cols-2" >
 
         </div>
         <div id="loading">
