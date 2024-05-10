@@ -34,31 +34,24 @@ document.addEventListener("DOMContentLoaded", function () {
                         datanotfountTemplate;
                     isLoading = false;
                 } else {
-                    data.data.forEach(product => {
+                        data.data.forEach((item, index) => {
                         const newItem = document.createElement('div');
-                        newItem.classList.add('pt-6', 'pb-6', 'pl-5', 'pr-5', 'bg-[#F7F7F7]',
-                            'border', 'flex',
-                            'flex-col', 'transition-all', 'duration-200', 'ease-in-out',
-                            'transform',
-                            'translate-x-0', 'translate-y-0', 'border-gray-300',
-                            'hover:shadow-2xl',
-                            'hover:bg-white', 'hover:translate-y-1');
                         newItem.innerHTML = `
-                        <div>
+                        <div class="pt-6 pb-6 pl-5 pr-5 bg-[#F7F7F7] border flex flex-col transition-all duration-200 ease-in-out transform translate-x-0 translate-y-0 border-gray-300 hover:shadow-2xl hover:bg-white hover:translate-y-1">
                             <div class="md:flex space-x-5">
                                 <div class="flex justify-center">
-                                    <img src="img_menu/${product.img_menu}" alt="${product.title}" width="100" height="100">
+                                    <img src="img_menu/${item.img_menu}" alt="${item.title}" width="150" height="150">
                                 </div>
-                                <div class="space-y-7">
+                                <div class="space-y-7 max-w-full md:max-w-[50%]">
                                     <div class="font-dosisBold text-[24px]">
-                                        <span>${product.title}</span>
+                                        <span>${item.title}</span>
                                     </div>
                                     <div class="font-dosisReguler text-gray-500 text-[18px]">
-                                        <p>${stripHtmlTags(product.description)}</p>
+                                        <p>${stripHtmlTags(item.description)}</p>
                                     </div>
                                 </div>
                                 <div class="font-dosisSemiBold text-red-600 text-[24px]">
-                                    <span>Rp.${product.price}</span>
+                                    <span>Rp.${item.price}</span>
                                 </div>
                             </div>
                         </div>`;
