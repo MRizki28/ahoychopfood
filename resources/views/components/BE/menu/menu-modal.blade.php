@@ -62,7 +62,6 @@
             height: 100,
             toolbar: [
                 ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['para', ['ul', 'ol']],
                 ['view', ['codeview']]
             ],
         });
