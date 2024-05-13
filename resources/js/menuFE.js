@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </div>
                             </div>
                         </div>`;
-                        document.getElementById('infinite-scroll').appendChild(newItem);
+                        document.querySelector('#infinite-scroll').appendChild(newItem);
                     });
                     page++;
                     isLoading = false;
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function handleScroll() {
-        const element = document.getElementById('infinite-scroll');
+        const element = document.querySelector('#infinite-scroll');
         const {
             scrollTop,
             scrollHeight,
@@ -82,6 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    document.getElementById('infinite-scroll').addEventListener('scroll', handleScroll);
+    document.querySelector('#infinite-scroll').addEventListener('scroll', handleScroll);
     fetchData();
 });
