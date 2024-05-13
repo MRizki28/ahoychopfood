@@ -3,8 +3,9 @@
 namespace App\Interfaces;
 
 use App\Http\Requests\Information\InformationRequest;
+use Illuminate\Http\Request;
 
 interface InformationInterfaces {
-    public function getData();
+    public function getData(Request $request);
     public function createData(InformationRequest $request);
 }
