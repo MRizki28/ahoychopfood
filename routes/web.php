@@ -12,6 +12,9 @@ Route::get('/', function () {
 Route::get('/cms/be/menu', function () {
     return view('BE.pages.menu');
 });
+Route::get('/cms/be/information', function () {
+    return view('BE.pages.information');
+});
 
 
 Route::prefix('v1')->group(function () {
@@ -22,7 +25,7 @@ Route::prefix('v1')->group(function () {
     });
 
     Route::prefix('information')->controller(InformationController::class)->group(function() {
-        Route::get('/' , 'getAllData');
+        Route::get('/' , 'getData');
         Route::post('/create' , 'createData');
     });
 });
