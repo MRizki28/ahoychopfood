@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>`;
 
     const openModal = (id, data) => {
-        const modal = document.getElementById('blogModal');
+        const modal = document.querySelector('#blogModal');
         const selectedItem = data.data.find(item => item.id === id);
         console.log(selectedItem)
         const imgElement = modal.querySelector('#img_information');
@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-
 
     const getData = async () => {
         try {
@@ -71,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </div>
                             </div>
                         `;
-                        document.getElementById('infinite-scroll-information').appendChild(newItem)
+                        document.querySelector('#infinite-scroll-information').appendChild(newItem)
                     });
                     page++
                     isLoading = false
@@ -87,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
     function handleScroll() {
-        const element = document.getElementById('infinite-scroll-information');
+        const element = document.querySelector('#infinite-scroll-information');
         const {
             scrollTop,
             scrollHeight,
@@ -98,6 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    document.getElementById('infinite-scroll-information').addEventListener('scroll', handleScroll);
+    document.querySelector('#infinite-scroll-information').addEventListener('scroll', handleScroll);
     getData();
 })
