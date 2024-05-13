@@ -122,8 +122,23 @@ export function successDeleteAlert() {
     })
 }
 
+export function decodeEntities(encodedString) {
+    var textArea = document.createElement('textarea');
+    textArea.innerHTML = encodedString;
+    return textArea.value;
+}
+
 export function stripHtmlTags(text) {
     var div = document.createElement("div");
     div.innerHTML = text;
     return div.textContent || div.innerText || "";
+}
+
+export function truncateString(str) {
+    var words = str.split(' ');
+    if (words.length <= 5) {
+        return str;
+    } else {
+        return words.slice(0, 5).join(' ') + '...';
+    }
 }
