@@ -16,6 +16,11 @@ class InformationController extends Controller
         $this->informationRepo = $informationRepo;
     }
 
+    public function getData(Request $request)
+    {
+        return $this->informationRepo->getData($request);
+    }
+
     public function createData(InformationRequest $request)
     {
         return $this->informationRepo->createData($request);
