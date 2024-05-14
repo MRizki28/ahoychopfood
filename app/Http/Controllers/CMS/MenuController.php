@@ -25,4 +25,9 @@ class MenuController extends Controller
     {
         return $this->menuRepo->createData($request);
     }
+
+    public function getDataById($id)
+    {
+        return $this->menuRepo->getDataById($id);
+    }
 }
