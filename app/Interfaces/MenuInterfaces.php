@@ -9,4 +9,5 @@ interface MenuInterfaces
 {
     public function getAllData(Request $request);
     public function createData(MenuRequest $request);
+    public function getDataById($id);
 }
