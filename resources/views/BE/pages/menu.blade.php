@@ -112,7 +112,7 @@
                                 <td style='padding: 0 25px !important;' class='text-center'>${item.price}</td>
                                 <td style='padding: 0 25px !important;' class='text-center'>${stripHtmlTags(item.description)}</td>
                                 <td style='padding: 0 10px !important;' class='text-left text-center '>
-                                    <button class='btn btn-sm edit-modal mr-1' data-toggle='modal' data-target='#typeDocumentEditModal' data-id='${item.id}'><i class='fas fa-edit'></i></button>
+                                    <button class='btn btn-sm edit-modal mr-1' data-toggle='modal' data-target='#menuModal' data-id='${item.id}'><i class='fas fa-edit'></i></button>
                                     <button type='submit' class='delete-confirm btn btn-sm' data-id='${item.id}' name='rejected'><i class='fas fa-trash-alt'></i></button>
                                 </td>
                             </tr>`;
@@ -132,20 +132,33 @@
             };
             getAllData();
 
+
+
             let isEditMode = false;
 
             const showModal = (editMode = false, id = '') => {
-                isEditMode = editMode;
+                isEditMode = editMode
+                console.log(isEditMode)
+                const modalTitle = document.getElementById('modal-title');
+                const submitButton = document.querySelector('.button-footer button[type="submit"]');
+                const idInput = document.getElementById('id');
+                const menuModal = document.getElementById('menuModal');
+
                 if (isEditMode) {
-                    $('#modal-title').text('Edit Menu');
-                    $('.button-footer button[type="submit"]').text('Update');
+                    modalTitle.textContent = 'Edit Menu';
+                    submitButton.textContent = 'Update';
                 } else {
-                    $('#modal-title').text('Tambah Menu');
-                    $('.button-footer button[type="submit"]').text('Submit');
+                    modalTitle.textContent = 'Tambah Menu';
+                    submitButton.textContent = 'Submit';
                 }
-                $('#id').val(id);
-                $('#menuModal').modal('show');
+
+                idInput.value = id; 
+                console.log("id disini" ,idInput)
+
+                const modalInstance = new bootstrap.Modal(menuModal);
+                modalInstance.show();
             };
+
 
             document.addEventListener('change', event => {
                 if (event.target.matches('#img_menu')) {
@@ -162,6 +175,8 @@
                 const submitButton = e.target.querySelector('button[type="submit"]');
 
                 if (isEditMode) {
+
+                    console.log('update',isEditMode)
                     const id = document.getElementById('id').value;
                     submitButton.disabled = true;
 
@@ -212,6 +227,43 @@
                     }
                 }
             });
+
+            document.addEventListener('click', async function(event) {
+                const editModalElement = event.target.closest('.edit-modal');
+                if (editModalElement) {
+                    console.log('Edit modal clicked');
+                    let id = editModalElement.getAttribute('data-id');
+                    let menu = document.querySelector('#title');
+                    let labelImg = document.querySelector('#efile_menu-label');
+                    let fileInput = document.querySelector('#img_menu');
+                    let price = document.querySelector('#price');
+                    let description = $('#description');
+                    if (id) {
+                        const response = await fetch(`{{ url('v1/menu/get') }}/${id}`);
+                        const responseData = await response.json();
+                        const fileUrl = `/img_menu/${responseData.data.img_menu}`;
+                        console.log(fileUrl)
+                        const fileName = fileUrl.split('/').pop();
+                        console.log('disini filename' ,fileName)
+                        const blob = await fetch(fileUrl).then(response => response.blob());
+                        console.log(blob)
+                        const file = new File([blob], fileName);
+                        const fileList = new DataTransfer();
+
+                        fileList.items.add(file);
+                        fileInput.files = fileList.files;
+                        menu.value = responseData.data.title
+                        labelImg.textContent = responseData.data.img_menu.split('/').pop();
+                        price.value = responseData.data.price
+                        description.summernote('code', stripHtmlTags(responseData.data.description));
+
+                        showModal(true, responseData.data.id)
+                    } else {
+                        console.error('Data ID is null or undefined.');
+                    }
+                }
+            });
+
         });
     </script>
 @endsection
