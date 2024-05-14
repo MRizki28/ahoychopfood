@@ -11,6 +11,7 @@
                     </div>
                     <div class="form mt-4">
                         <form action="" id="formTambah">
+                            <input type="hidden" name="id" id="id">
                             <div class="form-group">
                                 <label for="title">Nama Menu</label>
                                 <input type="text" class="form-control" name="title"
