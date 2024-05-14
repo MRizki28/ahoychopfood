@@ -67,4 +67,18 @@ class MenuRepositories implements MenuInterfaces
             return $this->error($th->getMessage());
         }
     }
+
+    public function getDataById($id)
+    {
+        try {
+            $data = $this->menuModel::where('id', $id)->first();
+            if (!$data) {
+                return $this->idOrDataNotFound();
+            }else{
+                return $this->success($data);
+            }
+        } catch (\Throwable $th) {
+            return $this->error($th->getMessage());
+        }
+    }
 }
