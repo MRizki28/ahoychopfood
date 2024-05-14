@@ -22,10 +22,12 @@ Route::prefix('v1')->group(function () {
     Route::prefix('menu')->controller(MenuController::class)->group(function() {
         Route::get('/' , 'getAllData');
         Route::post('/create' , 'createData');
+        Route::get('/get/{id}', 'getDataById');
     });
 
     Route::prefix('information')->controller(InformationController::class)->group(function() {
         Route::get('/' , 'getData');
         Route::post('/create' , 'createData');
+        Route::get('/captcha', 'getCapthcaBumn');
     });
 });
