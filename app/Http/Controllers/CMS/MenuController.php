@@ -30,4 +30,14 @@ class MenuController extends Controller
     {
         return $this->menuRepo->getDataById($id);
     }
+
+    public function updateData(MenuRequest $request,$id)
+    {
+        return $this->menuRepo->updateData($request,$id);
+    }
+
+    public function deleteData($id)
+    {
+        return $this->menuRepo->deleteData($id);
+    }
 }
