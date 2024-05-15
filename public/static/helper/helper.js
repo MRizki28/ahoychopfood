@@ -46,6 +46,16 @@ function successAlert() {
     })
 }
 
+function successUpdateAlert() {
+    return Swal.fire({
+        title: 'Success',
+        text: 'Data berhasil diperbaharui',
+        icon: 'success',
+        showCancelButton: false,
+        confirmButtonText: 'OK',
+    })
+}
+
 function successResetPasswordAlert() {
     return Swal.fire({
         title: 'Success',
@@ -73,8 +83,6 @@ function errorAlert() {
         icon: 'error',
         timer: 5000,
         showConfirmButton: true
-    }).then(function () {
-        window.location.reload();
     });
 }
 
