@@ -95,6 +95,7 @@
                     const pagination = document.querySelector(".pagination");
                     const tableBody = document.querySelector("#table tbody");
                     const dataNotFoundElem = document.querySelector("#dataNotFound");
+                    const totalData = document.querySelector('#data-total');
                     tableBody.innerHTML = '';
                     pagination.innerHTML = '';
 
@@ -126,6 +127,8 @@
                         tableBody.innerHTML = '';
                         dataNotFoundElem.innerHTML = dataNotFound();
                     }
+
+                    totalData.textContent = responseData.data && responseData.data.total ? responseData.data.total : "0";
                 } catch (error) {
                     console.error('Error:', error);
                 }
@@ -152,8 +155,8 @@
                     submitButton.textContent = 'Submit';
                 }
 
-                idInput.value = id; 
-                console.log("id disini" ,idInput)
+                idInput.value = id;
+                console.log("id disini", idInput)
 
                 const modalInstance = new bootstrap.Modal(menuModal);
                 modalInstance.show();
@@ -176,30 +179,30 @@
 
                 if (isEditMode) {
 
-                    console.log('update',isEditMode)
+                    console.log('update', isEditMode)
                     const id = document.getElementById('id').value;
                     submitButton.disabled = true;
 
                     try {
-                        const response = await fetch(`{{ url('v1/account/update') }}/${id}`, {
+                        const response = await fetch(`{{ url('v1/menu/update') }}/${id}`, {
                             method: 'POST',
                             body: formData
                         });
 
                         if (response.ok) {
+                            const responseData = await response.json();
+                            console.log(responseData)
                             submitButton.disabled = false;
-                        } else {
-                            throw new Error('Network response was not ok.');
+                            if (responseData.message === 'Check your validation') {
+                                warningAlert();
+                            } else {
+                                successUpdateAlert();
+                                window.location.reload()
+                            }
                         }
                     } catch (error) {
                         console.error(error);
-                        Swal.fire({
-                            title: 'Error',
-                            html: 'Terjadi kesalahan',
-                            icon: 'error',
-                            timer: 5000,
-                            showConfirmButton: true
-                        });
+                        errorAlert();
                     }
                 } else {
                     submitButton.disabled = true;
@@ -219,11 +222,10 @@
                                 successAlert();
                                 window.location.reload()
                             }
-                        } else {
-                            throw new Error('Network response was not ok.');
                         }
                     } catch (error) {
                         console.error(error);
+                        errorAlert();
                     }
                 }
             });
@@ -244,7 +246,7 @@
                         const fileUrl = `/img_menu/${responseData.data.img_menu}`;
                         console.log(fileUrl)
                         const fileName = fileUrl.split('/').pop();
-                        console.log('disini filename' ,fileName)
+                        console.log('disini filename', fileName)
                         const blob = await fetch(fileUrl).then(response => response.blob());
                         console.log(blob)
                         const file = new File([blob], fileName);
@@ -263,6 +265,42 @@
                     }
                 }
             });
+
+            document.addEventListener('click', async e => {
+
+                const deleteModalElement = e.target.closest('.delete-confirm');
+                if (deleteModalElement) {
+                    e.preventDefault();
+                    let id = deleteModalElement.getAttribute('data-id');
+                    deleteAlert().then(async (result) => {
+                        if (result.isConfirmed) {
+                            try {
+                                const response = await fetch(
+                                    `{{ url('v1/menu/delete') }}/${id}`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            "Content-Type": "application/json",
+                                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                                        }
+                                    });
+
+                                const responseData = await response.json();
+                                console.log(responseData)
+
+                                if (responseData.message == 'Success delete') {
+                                    successDeleteAlert().then(function() {
+                                        getAllData();
+                                    });
+                                } else {
+                                    errorAlert()
+                                }
+                            } catch (error) {
+                                errorAlert();
+                            };
+                        }
+                    })
+                }
+            })
 
         });
     </script>
