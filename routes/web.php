@@ -23,6 +23,8 @@ Route::prefix('v1')->group(function () {
         Route::get('/' , 'getAllData');
         Route::post('/create' , 'createData');
         Route::get('/get/{id}', 'getDataById');
+        Route::post('/update/{id}', 'updateData');
+        Route::delete('/delete/{id}', 'deleteData');
     });
 
     Route::prefix('information')->controller(InformationController::class)->group(function() {
