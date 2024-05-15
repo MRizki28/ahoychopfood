@@ -7,6 +7,7 @@ use App\Interfaces\MenuInterfaces;
 use App\Models\MenuModel;
 use App\Traits\HttpResponseTraits;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class MenuRepositories implements MenuInterfaces
@@ -74,9 +75,51 @@ class MenuRepositories implements MenuInterfaces
             $data = $this->menuModel::where('id', $id)->first();
             if (!$data) {
                 return $this->idOrDataNotFound();
-            }else{
+            } else {
                 return $this->success($data);
             }
+        } catch (\Throwable $th) {
+            return $this->error($th->getMessage());
+        }
+    }
+
+    public function updateData(MenuRequest $request, $id)
+    {
+        try {
+            $data = $this->menuModel::where('id', $id)->first();
+            $data->title = htmlspecialchars($request->input('title'));
+            if ($request->hasFile('img_menu')) {
+                $file = $request->file('img_menu');
+                $extension = $file->getClientOriginalExtension();
+                $filename = 'MENU-' . Str::random(10) . '.' . $extension;
+                $file->move(public_path('img_menu'), $filename);
+                $old_file_path = public_path('img_menu/') . $data->img_menu;
+                if (file_exists($old_file_path)) {
+                    unlink($old_file_path);
+                }
+                $data->img_menu = $filename;
+            }
+            $data->description = htmlspecialchars($request->input('description'));
+            $data->price = htmlspecialchars($request->input('price'));
+            $data->save();
+
+            return $this->success($data);
+        } catch (\Throwable $th) {
+            return $this->error($th->getMessage());
+        }
+    }
+
+    public function deleteData($id)
+    {
+        try {
+            $data = $this->menuModel::where('id', $id)->first();
+            $file = public_path('img_menu/') . $data->img_menu;
+            if (File::exists($file)) {
+                File::delete($file);
+            }
+
+            $data->delete();
+            return $this->delete();
         } catch (\Throwable $th) {
             return $this->error($th->getMessage());
         }
