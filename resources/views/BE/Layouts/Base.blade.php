@@ -14,9 +14,9 @@
 <body>
     <div class="wrapper">
         <div class="main-header">
-            <div class="logo-header position-relative" data-background-color="light-blue">
+            <div class="logo-header position-relative" style="background-color: #E72929">
                 <a href="/" class="logo ">
-                    <img src="{{ asset('assets/FE/img/logo.webp') }}" class="navbar-brand" width="100"
+                    <img src="{{ asset('assets/FE/img/logo3.webp') }}" class="navbar-brand" width="100"
                         alt="logo">
                 </a>
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"

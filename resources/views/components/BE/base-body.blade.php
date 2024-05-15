@@ -5,7 +5,7 @@
                 <div class="card-header">
                     @if ($useHeaderAddButton == 'true')
                     <div class=" d-flex justify-content-end">
-                        <button class="btn btn-primary" data-toggle="modal"
+                        <button class="btn btn-outline-danger" data-toggle="modal"
                             data-target="{{ $modalId }}">
                             <i class="fas fa fa-plus"></i> {{ $headerAddButton }}
                         </button>

@@ -25,4 +25,19 @@ class InformationController extends Controller
     {
         return $this->informationRepo->createData($request);
     }
+
+    public function getDataById($id)
+    {
+        return $this->informationRepo->getDataById($id);
+    }
+
+    public function updateData(InformationRequest $request,$id)
+    {
+        return $this->informationRepo->updateData($request,$id);
+    }
+
+    public function deleteData($id)
+    {
+        return $this->informationRepo->deleteData($id);
+    }
 }

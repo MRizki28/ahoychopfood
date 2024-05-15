@@ -1,4 +1,4 @@
-<div class="modal fade " id="menuModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade " id="informationModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 1024px; ">
         <div class="modal-content">
             <div class="container">
@@ -11,6 +11,7 @@
                     </div>
                     <div class="form mt-4">
                         <form action="" id="formTambah">
+                            <input type="hidden" name="id" id="id">
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" class="form-control" name="title" id="title">
@@ -37,7 +38,7 @@
                                     <button type="button" class="btn text-white mr-3"
                                         style="background-color:#495057; border-radius: 0px;" data-dismiss="modal"
                                         aria-label="Close">Batal</button>
-                                    <button class="btn btn-primary" type="submit"
+                                    <button class="btn btn-outline-danger" type="submit"
                                         style="border-radius: 0px;">Simpan</button>
                                 </div>
                             </div>

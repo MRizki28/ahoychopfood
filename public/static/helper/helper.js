@@ -182,3 +182,27 @@ const dataNotFound = () => {
         </tr>`;
     return emptyInfoTemplate;
 }
+
+function clearInputFormMenu() {
+    const formControls = document.querySelectorAll('.form-control');
+    formControls.forEach(control => {
+        control.value = '';
+    });
+    const fileInput = document.querySelector('#img_menu');
+    fileInput.value = '';
+    const labelImg = document.querySelector('#efile_menu-label');
+    labelImg.textContent = 'Pilih file...';
+    $('#description').summernote('code', '');
+}
+
+function clearInputFormInformation() {
+    const formControls = document.querySelectorAll('.form-control');
+    formControls.forEach(control => {
+        control.value = '';
+    });
+    const fileInput = document.querySelector('#img_information');
+    fileInput.value = '';
+    const labelImg = document.querySelector('#efile_information-label');
+    labelImg.textContent = 'Pilih file...';
+    $('#description').summernote('code', '');
+}

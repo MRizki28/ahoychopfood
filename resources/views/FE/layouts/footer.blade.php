@@ -57,14 +57,14 @@
                 <div class="flex flex-col text-white font-dosisSemiBold space-y-4">
                     <div>
                         <a href="#home">
-                            <span>Samarinda No 20</span>
+                            <span>Samarinda</span>
                         </a>
                     </div>
                     <div>
                         <span>instagram.com/@ahoychop.id</span>
                     </div>
                     <div>
-                        <span>+62 082290333669</span>
+                        <span>+62 816-4908-8635</span>
                     </div>
                 </div>
             </div>

@@ -41,13 +41,13 @@
                         </li>    --}}
 						<li class="nav-item {{ request()->is('cms/be/menu*') ? 'active' : '' }}">
                             <a href="{{ url('/cms/be/menu') }}">
-                                <i class="fas fa-file"></i>
+                                <i class="fas fa-concierge-bell"></i>
                                 <p>Menu</p>
                             </a>
                         </li>   
 						<li class="nav-item {{ request()->is('cms/be/information*') ? 'active' : '' }}">
                             <a href="{{ url('/cms/be/information') }}">
-                                <i class="fas fa-file"></i>
+                                <i class="fab fa-blogger"></i>
                                 <p>Information</p>
                             </a>
                         </li>   

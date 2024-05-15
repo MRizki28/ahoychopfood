@@ -44,7 +44,7 @@
                                     <button type="button" class="btn text-white mr-3"
                                         style="background-color:#495057; border-radius: 0px;" data-dismiss="modal"
                                         aria-label="Close">Batal</button>
-                                    <button class="btn btn-primary" type="submit"
+                                    <button class="btn btn-outline-danger" type="submit"
                                         style="border-radius: 0px;">Simpan</button>
                                 </div>
                             </div>

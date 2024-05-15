@@ -8,6 +8,7 @@ use App\Interfaces\InformationInterfaces;
 use App\Models\InformationModel;
 use App\Traits\HttpResponseTraits;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class InformationRepositories implements InformationInterfaces
@@ -43,7 +44,7 @@ class InformationRepositories implements InformationInterfaces
             return $this->success($data);
         }
     }
-    
+
     public function createData(InformationRequest $request)
     {
         try {
@@ -52,13 +53,63 @@ class InformationRepositories implements InformationInterfaces
             if ($request->hasFile('img_information')) {
                 $file = $request->file('img_information');
                 $extention = $file->getClientOriginalExtension();
-                $filename = 'INFORMATION-'. Str::random(15) . '.' . $extention;
+                $filename = 'INFORMATION-' . Str::random(15) . '.' . $extention;
                 $file->move(public_path('img_information'), $filename);
                 $data->img_information = htmlspecialchars($filename);
             }
             $data->description = htmlspecialchars($request->input('description'));
             $data->save();
             return $this->success($data);
+        } catch (\Throwable $th) {
+            return $this->error($th->getMessage());
+        }
+    }
+
+    public function getDataById($id)
+    {
+        $data = $this->informationModel->where('id', $id)->first();
+        if (!$data) {
+            return $this->idOrDataNotFound();
+        } else {
+            return $this->success($data);
+        }
+    }
+
+    public function updateData(InformationRequest $request, $id)
+    {
+        try {
+            $data = $this->informationModel->where('id', $id)->first();
+            $data->title = htmlspecialchars($request->input('title'));
+            if ($request->hasFile('img_information')) {
+                $file = $request->file('img_information');
+                $extention = $file->getClientOriginalExtension();
+                $filename = 'INFORMATION-' . Str::random(15) . '.' . $extention;
+                $file->move(public_path('img_information'), $filename);
+                $old_file_path = public_path('img_information/') . $data->img_information;
+                if (file_exists($old_file_path)) {
+                    unlink($old_file_path);
+                }
+                $data->img_information = htmlspecialchars($filename);
+            }
+            $data->description = htmlspecialchars($request->input('description'));
+            $data->save();
+            return $this->success($data);
+        } catch (\Throwable $th) {
+            return $this->error($th->getMessage());
+        }
+    }
+
+    public function deleteData($id)
+    {
+        try {
+            $data = $this->informationModel->where('id', $id)->first();
+            $file = public_path('img_information/') . $data->img_information;
+            if (File::exists($file)) {
+                File::delete($file);
+            }
+            $data->delete();
+
+            return $this->delete();
         } catch (\Throwable $th) {
             return $this->error($th->getMessage());
         }

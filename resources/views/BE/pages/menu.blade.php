@@ -109,7 +109,7 @@
                             <tr>
                                 <td style='padding: 0 25px !important;' class='text-center'>${index + 1}</td>
                                 <td style='padding: 0 25px !important;' class='text-center'>${item.title}</td>
-                                <td><a href="/img_menu/${item.img_menu}" class="fa-xl" target="_blank"><i class="fa fa-eye"></i></a></td>
+                                <td><a href="/img_menu/${item.img_menu}" class="fa-xl" style="color: #E72929;" target="_blank"><i class="fa fa-eye"></i></a></td>
                                 <td style='padding: 0 25px !important;' class='text-center'>${item.price}</td>
                                 <td style='padding: 0 25px !important;' class='text-center'>${stripHtmlTags(item.description)}</td>
                                 <td style='padding: 0 10px !important;' class='text-left text-center '>
@@ -128,7 +128,8 @@
                         dataNotFoundElem.innerHTML = dataNotFound();
                     }
 
-                    totalData.textContent = responseData.data && responseData.data.total ? responseData.data.total : "0";
+                    totalData.textContent = responseData.data && responseData.data.total ? responseData.data
+                        .total : "0";
                 } catch (error) {
                     console.error('Error:', error);
                 }
@@ -267,7 +268,6 @@
             });
 
             document.addEventListener('click', async e => {
-
                 const deleteModalElement = e.target.closest('.delete-confirm');
                 if (deleteModalElement) {
                     e.preventDefault();
@@ -302,6 +302,13 @@
                 }
             })
 
+            $('#menuModal').on('hidden.bs.modal', function() {
+                isEditMode = false;
+                clearInputFormMenu()
+                $('#modal-title').text('Tambah Data');
+                $('.button-footer button[type="submit"]').text('Simpan');
+                console.log(isEditMode)
+            });
         });
     </script>
 @endsection
