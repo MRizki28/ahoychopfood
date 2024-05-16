@@ -5,7 +5,7 @@
                 <img src="{{ asset('assets/FE/img/logo2.webp') }}" class="h-12" alt="Flowbite Logo" />
             </a>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                <a href="#footer" 
+                <a href="https://api.whatsapp.com/send?phone=081649088635&text=Hallo%20saya%20mau%20order%20min!" target="_blank" 
                     class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center ">Contact</a>
             </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
