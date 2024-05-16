@@ -17,3 +17,15 @@
         text-align: center
     }
 }
+
+.background-auth{
+    background-image: url('../../assets/FE/img/bg-hero.webp ');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateX(0%);
+}
+
+.background-login{
+    background-image: url('../../assets/FE/img/bg-bestsale.webp');
+}
