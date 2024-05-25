@@ -11,7 +11,8 @@
 
     {{-- card desktop --}}
     <div>
-        <div id="infinite-scroll" class="overflow-auto max-h-[30rem] grid grid-cols-1 mt-5 md:gap-y-10  gap-3 md:grid-cols-2" >
+        <div id="infinite-scroll"
+            class="overflow-auto max-h-[30rem] grid grid-cols-1 mt-5 md:gap-y-10  gap-3 md:grid-cols-2">
 
         </div>
         <div id="loading">
@@ -20,6 +21,9 @@
     </div>
 
     <div class="font-dosisBold text-[18px] text-white flex justify-center mt-10">
-        <button class="border bg-red-600 rounded-xl p-3 ">Order Here</button>
+        <a href="https://api.whatsapp.com/send?phone=081649088635&text=Hallo%20saya%20mau%20order%20min!"
+            target="_blank"
+            class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center ">Order
+            Here</a>
     </div>
 </div>
